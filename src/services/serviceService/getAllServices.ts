@@ -1,4 +1,4 @@
-import axiosInstance from "../axios";
+import axiosInstance from "@/services/axios";
 import { ServiceResponse } from "@/types/service";
 
 const getAllServices = async (): Promise<ServiceResponse> => {

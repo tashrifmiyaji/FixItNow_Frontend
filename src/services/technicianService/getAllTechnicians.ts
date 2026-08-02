@@ -1,4 +1,4 @@
-import axiosInstance from "../axios";
+import axiosInstance from "@/services/axios";
 import { TechnicianResponse } from "@/types/technician";
 
 const getAllTechnicians = async (): Promise<TechnicianResponse> => {

@@ -1,4 +1,4 @@
-import axiosInstance from "../axios";
+import axiosInstance from "@/services/axios";
 import { CategoryResponse } from "@/types/category";
 
 const getAllCategories = async (): Promise<CategoryResponse> => {
