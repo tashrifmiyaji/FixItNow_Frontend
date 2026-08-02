@@ -6,6 +6,7 @@ import { Toaster } from "sonner";
 import QueryProvider from "@/providers/QueryProvider";
 import ThemeProvider from "@/providers/ThemeProvider";
 import AuthProvider from "@/providers/AuthProvider";
+import Navbar from "@/components/shared/Navbar";
 
 export const metadata: Metadata = {
   title: "FixItNow",
@@ -23,6 +24,8 @@ export default function RootLayout({
         <ThemeProvider>
           <QueryProvider>
             <AuthProvider>
+              <Navbar />
+
               {children}
               <Toaster richColors position="top-right" />
             </AuthProvider>
