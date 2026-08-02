@@ -5,10 +5,10 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
-import useService from "@/hooks/service/useServices";
+import { useServices } from "@/hooks/service/useServices";
 
 export default function FeaturedServicesSection() {
-  const { data, isLoading } = useService();
+  const { data, isLoading } = useServices();
 
   if (isLoading) {
     return (

@@ -3,12 +3,19 @@
 import { useQuery } from "@tanstack/react-query";
 
 import getAllServices from "@/services/serviceService/getAllServices";
+import getServiceById from "@/services/serviceService/getServiceById";
 
-const useServices = () => {
+export function useServices() {
   return useQuery({
     queryKey: ["services"],
     queryFn: getAllServices,
   });
-};
+}
 
-export default useServices;
+export function useService(id: string) {
+  return useQuery({
+    queryKey: ["service", id],
+    queryFn: () => getServiceById(id),
+    enabled: !!id,
+  });
+}

@@ -51,3 +51,12 @@ export interface ServiceDetailsResponse {
   message: string;
   data: Service;
 }
+
+export interface TechnicianUser {
+  id: string;
+  name: string;
+  email: string;
+  phone?: string;
+  role?: string;
+  status?: string;
+}
