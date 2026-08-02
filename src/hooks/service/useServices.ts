@@ -1,13 +1,14 @@
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
-import getAllServices from "@/services/serviceService/getAllServices";
+import getServiceById from "@/services/serviceService/getServiceById";
 
-const useServices = () => {
+const useService = (id: string) => {
   return useQuery({
-    queryKey: ["services"],
-    queryFn: getAllServices,
+    queryKey: ["service", id],
+    queryFn: () => getServiceById(id),
+    enabled: !!id,
   });
 };
 
-export default useServices;
+export default useService;

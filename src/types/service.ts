@@ -44,3 +44,10 @@ export interface ServiceResponse {
   };
   data: Service[];
 }
+
+export interface ServiceDetailsResponse {
+  success: boolean;
+  statusCode: number;
+  message: string;
+  data: Service;
+}
