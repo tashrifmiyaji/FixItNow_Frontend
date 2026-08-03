@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 
 import { useBookings } from "@/hooks/booking/useBookings";
 import { useCreatePayment } from "@/hooks/payment/useCreatePayment";
+import ReviewForm from "./ReviewForm";
 
 export default function BookingTable() {
   const { data, isLoading } = useBookings();
@@ -78,6 +79,16 @@ export default function BookingTable() {
 
                 {booking.status === "COMPLETED" && (
                   <Badge>Completed</Badge>
+                )}
+
+                {booking.status === "COMPLETED" && !booking.review && (
+                  <ReviewForm bookingId={booking.id} />
+                )}
+
+                {booking.review && (
+                  <span className="text-green-600">
+                    Review Submitted
+                  </span>
                 )}
 
                 {booking.status === "DECLINED" && (
