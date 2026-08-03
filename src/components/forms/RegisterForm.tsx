@@ -2,7 +2,7 @@
 
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
-
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
@@ -22,9 +22,11 @@ export default function RegisterForm() {
   const onSubmit = async (data: RegisterPayload) => {
     try {
       await registerUser(data);
+      toast.success("Registration successful");
 
       router.push("/login");
     } catch (err) {
+      toast.error("Registration failed");
       console.log(err);
     }
   };

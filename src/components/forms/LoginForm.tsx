@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import loginUser from "@/services/authService/loginUser";
 import { useAuth } from "@/providers/AuthProvider";
 import { getCurrentUser } from "@/services/authService/getCurrentUser";
+import { toast } from "sonner";
 
 type LoginData = {
   email: string;
@@ -28,6 +29,7 @@ export default function LoginForm() {
  const onSubmit = async (data: LoginData) => {
   try {
     await loginUser(data);
+    toast.success("Login successful");
 
     await refetchUser();
 
@@ -43,6 +45,7 @@ export default function LoginForm() {
       router.push("/dashboard/customer");
     }
   } catch (error) {
+    toast.error("Invalid email or password");
     console.log(error);
   }
 };
