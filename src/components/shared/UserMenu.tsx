@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/providers/AuthProvider";
 
@@ -11,8 +12,8 @@ const UserMenu = () => {
     user?.role === "ADMIN"
       ? "/dashboard/admin"
       : user?.role === "TECHNICIAN"
-        ? "/dashboard/technician"
-        : "/dashboard/customer";
+      ? "/dashboard/technician"
+      : "/dashboard/customer";
 
   if (!user) {
     return (
@@ -22,7 +23,7 @@ const UserMenu = () => {
         </Button>
 
         <Button asChild>
-          <Link href={dashboardLink}>Dashboard</Link>
+          <Link href="/register">Register</Link>
         </Button>
       </div>
     );
@@ -30,7 +31,7 @@ const UserMenu = () => {
 
   return (
     <Button asChild>
-      <Link href="/dashboard">Dashboard</Link>
+      <Link href={dashboardLink}>Dashboard</Link>
     </Button>
   );
 };
