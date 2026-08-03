@@ -1,7 +1,7 @@
 "use client";
 
 import { Card, CardContent } from "@/components/ui/card";
-import useReview from "@/hooks/reviews/useReviews";
+import useReview from "@/hooks/review/useReviews";
 
 export default function TestimonialsSection() {
   const { data, isLoading } = useReview();
