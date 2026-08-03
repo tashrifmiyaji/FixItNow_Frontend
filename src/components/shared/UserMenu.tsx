@@ -7,6 +7,13 @@ import { useAuth } from "@/providers/AuthProvider";
 const UserMenu = () => {
   const { user } = useAuth();
 
+  const dashboardLink =
+    user?.role === "ADMIN"
+      ? "/dashboard/admin"
+      : user?.role === "TECHNICIAN"
+        ? "/dashboard/technician"
+        : "/dashboard/customer";
+
   if (!user) {
     return (
       <div className="flex items-center gap-3">
@@ -15,7 +22,7 @@ const UserMenu = () => {
         </Button>
 
         <Button asChild>
-          <Link href="/register">Register</Link>
+          <Link href={dashboardLink}>Dashboard</Link>
         </Button>
       </div>
     );

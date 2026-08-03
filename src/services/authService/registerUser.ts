@@ -1,19 +1,17 @@
 import axiosInstance from "../axios";
 
-import {
-  AuthResponse,
-  RegisterPayload,
-  User,
-} from "@/types/auth";
-
-interface RegisterResponse extends AuthResponse {
-  data: User;
+export interface RegisterPayload {
+  name: string;
+  email: string;
+  password: string;
+  phone: string;
+  role: "CUSTOMER" | "TECHNICIAN";
 }
 
-export const registerUser = async (
-  payload: RegisterPayload
-): Promise<RegisterResponse> => {
+const registerUser = async (payload: RegisterPayload) => {
   const { data } = await axiosInstance.post("/auth/register", payload);
 
   return data;
 };
+
+export default registerUser;

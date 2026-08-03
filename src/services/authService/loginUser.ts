@@ -1,10 +1,19 @@
-import axiosInstance from "@/services/axios";
-import { LoginPayload, LoginResponse } from "@/types/auth";
+import axiosInstance from "../axios";
 
-export const loginUser = async (
-  payload: LoginPayload
-): Promise<LoginResponse> => {
-  const { data } = await axiosInstance.post("/auth/login", payload);
+type LoginData = {
+  email: string;
+  password: string;
+};
+
+const loginUser = async (payload: LoginData) => {
+  const { data } = await axiosInstance.post(
+    "/auth/login",
+    payload
+  );
+
+  localStorage.setItem("accessToken", data.data.accessToken);
 
   return data;
 };
+
+export default loginUser;
