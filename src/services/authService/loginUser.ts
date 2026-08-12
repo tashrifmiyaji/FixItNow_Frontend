@@ -11,7 +11,14 @@ const loginUser = async (payload: LoginData) => {
     payload
   );
 
-  localStorage.setItem("accessToken", data.data.accessToken);
+  // Support multiple possible response shapes from backend
+  // e.g. { data: { accessToken } } or { accessToken } or { token }
+  const token =
+    data?.data?.accessToken || data?.accessToken || data?.token;
+
+  if (token && typeof window !== "undefined") {
+    localStorage.setItem("accessToken", token);
+  }
 
   return data;
 };

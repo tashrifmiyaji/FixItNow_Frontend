@@ -45,8 +45,12 @@ export default function LoginForm() {
       router.push("/dashboard/customer");
     }
   } catch (error) {
-    toast.error("Invalid email or password");
-    console.log(error);
+    // Prefer server-provided message when available
+    const message =
+      (error as any)?.response?.data?.message || (error as any)?.message || "Login failed";
+
+    toast.error(message);
+    console.error(error);
   }
 };
 
